@@ -1,7 +1,9 @@
 #Directories
-bower_components
-node_modules
-dist
+**/bower_components
+**/node_modules
+**/dist
+**/.DS_Store
+**/.idea
 
 #Files
 *.tgz
