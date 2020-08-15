@@ -1,0 +1,71 @@
+html,
+body {
+	position: relative;
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+	height: 100%;
+	color: #ffffff;
+	background-color: #000000; /* #020206 */
+	overflow-x: hidden;
+	font-family: Recursive, Roboto, "Open Sans", sans-serif;
+	font-weight: 300;
+	z-index: -999;
+	user-select: none;
+}
+
+.clear {
+	clear: both;
+}
+
+nobr {
+	white-space: nowrap;
+}
+
+code {
+	padding: 0.1em 0.2em;
+	border-radius: 0.2em;
+	background-color: rgba(255, 255, 255, 0.15);
+	font-family: VictorMono, "Victor Mono", "PragmataPro Mono Liga", "PragmataPro Liga", PragmataPro, Iosevka, monospace;
+	font-size: 0.9em;
+	white-space: pre;
+}
+
+/* <blink> implementation, though toned down */
+blink,
+.blink {
+	display: inline;
+	font-size: inherit;
+	font-family: inherit;
+	color: inherit;
+	-webkit-animation: blink 1s step-end infinite;
+	-moz-animation: blink 1s step-end infinite;
+	-ms-animation: blink 1s step-end infinite;
+	-o-animation: blink 1s step-end infinite;
+	animation: blink 1s step-end infinite;
+}
+@-webkit-keyframes blink {
+	67% {
+		opacity: 0;
+	}
+}
+@-moz-keyframes blink {
+	67% {
+		opacity: 0;
+	}
+}
+@-ms-keyframes blink {
+	67% {
+		opacity: 0;
+	}
+}
+@-o-keyframes blink {
+	67% {
+		opacity: 0;
+	}
+}
+@keyframes blink {
+	67% {
+		opacity: 0;
+	}
+}

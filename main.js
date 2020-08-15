@@ -1,15 +1,21 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow } = require("electron");
+const { app, ipcMain, BrowserWindow } = require("electron");
 const path = require("path");
 const vanilla = require("vanilla");
 
+let mainWindow;
 function createWindow() {
 	// Create the browser window.
-	const mainWindow = new BrowserWindow({
+	mainWindow = new BrowserWindow({
 		width: 800,
 		height: 600,
+		backgroundColor: "#000000",
 		webPreferences: {
-			preload: path.join(__dirname, "preload.js"),
+			preload: path.join(__dirname, "js", "preload.js"),
+			nodeIntegration: false,
+			enableRemoteModule: false,
+			contextIsolation: true,
+			sandbox: true,
 		},
 	});
 
@@ -32,6 +38,17 @@ app.whenReady().then(() => {
 			createWindow();
 		}
 	});
+
+	// API-like structure for secure communication between main and renderer - https://stackoverflow.com/a/57656281
+	let reply = function (messageType, data) {
+		mainWindow.webContents.send("messageReply", { messageType: messageType + "Reply", data: data });
+	};
+
+	ipcMain.on("version", (event, message) => {
+		console.log("Got the version message.", message);
+		const version = vanilla.version();
+		reply(message.messageType, version);
+	});
 });
 
 // Quit when all windows are closed, except on macOS. There, it's common for applications and their menu bar to stay
@@ -42,6 +59,10 @@ app.on("window-all-closed", function () {
 	}
 });
 
+ipcMain.handle("perform-action", (event) => {
+	// ... do something on behalf of the renderer ...
+});
+
 // In this file you can include the rest of your app's specific main process code. You can also put them in separate
 // files and require them here.
-console.log(vanilla.version());
+//console.log(vanilla.version());
