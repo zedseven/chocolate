@@ -1,4 +1,4 @@
-// A messy but solid method of securely requesting and receiving data from main, without exposing the renderer to node.
+// A messy but solid method of securely requesting and receiving data from main, without exposing node to the renderer.
 async function requestVanillaData(sMessage) {
 	await window.postMessage(sMessage, "*");
 	return new Promise(function (resolve, reject) {
