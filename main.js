@@ -45,9 +45,16 @@ app.whenReady().then(() => {
 	};
 
 	ipcMain.on("version", (event, message) => {
-		console.log("Got the version message.", message);
 		const version = vanilla.version();
 		reply(message.messageType, version);
+	});
+	ipcMain.on("merge", (event, message) => {
+		const mergeSuccess = vanilla.mergeFiles(
+			escapeBackslashes(message.data.mergeFiles[0]),
+			escapeBackslashes(message.data.mergeFiles[1]),
+			escapeBackslashes(message.data.outFile)
+		);
+		reply(message.messageType, mergeSuccess);
 	});
 });
 
@@ -58,6 +65,10 @@ app.on("window-all-closed", function () {
 		app.quit();
 	}
 });
+
+function escapeBackslashes(str) {
+	return str.replace(/\\/g, "\\\\");
+}
 
 // In this file you can include the rest of your app's specific main process code. You can also put them in separate
 // files and require them here.

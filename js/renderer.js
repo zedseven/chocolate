@@ -1,5 +1,7 @@
 // A messy but solid method of securely requesting and receiving data from main, without exposing node to the renderer.
-async function requestVanillaData(sMessage) {
+window.requestVanillaData = async function (messageType, data = undefined) {
+	let sMessage = { messageType: messageType };
+	if (data !== undefined) sMessage.data = data;
 	await window.postMessage(sMessage, "*");
 	return new Promise(function (resolve, reject) {
 		// https://stackoverflow.com/a/43084615
@@ -11,8 +13,4 @@ async function requestVanillaData(sMessage) {
 		};
 		window.addEventListener("message", listener);
 	});
-}
-
-requestVanillaData({ messageType: "version" }).then(function (data) {
-	console.log(data);
-});
+};

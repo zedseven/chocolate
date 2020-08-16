@@ -1,0 +1,9 @@
+meta_file_types = [
+    { file_name = "carcols.meta", parent_tags = [ "Kits", "Lights", "Wheels" ] },
+    { file_name = "carraddonContentUnlocks.meta", parent_tags = [ "listOfUnlocks" ] },
+    { file_name = "carvariations.meta", parent_tags = [ "variationData" ] },
+    { file_name = "clip_sets.xml", parent_tags = [ "clipSets", "clipDictionaryMetadatas" ] },
+    { file_name = "handling.meta", parent_tags = [ "HandlingData" ] },
+    { file_name = "vehiclelayouts.meta", parent_tags = [ "AnimRateSets", "ClipSetMaps", "VehicleCoverBoundOffsetInfos", "BicycleInfos", "POVTuningInfos", "EntryAnimVariations", "VehicleExtraPointsInfos", "DrivebyWeaponGroups", "VehicleDriveByAnimInfos", "VehicleDriveByInfos", "VehicleSeatInfos", "VehicleSeatAnimInfos", "VehicleEntryPointInfos", "VehicleEntryPointAnimInfos", "VehicleExplosionInfos", "VehicleLayoutInfos", "VehicleScenarioLayoutInfos", "SeatOverrideAnimInfos", "InVehicleOverrideInfos", "FirstPersonDriveByLookAroundData" ] },
+    { file_name = "vehicles.meta", parent_tags = [ "InitDatas", "txdRelationships" ] },
+]
